@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Salary Report</h2>
+
+<form method="get" class="mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <select name="designation" class="form-select">
+        <option value="">All Designations</option>
+        {% for d in designations %}
+          <option value="{{ d.id }}" {% if request.GET.designation == d.id|stringformat:"s" %}selected{% endif %}>
+            {{ d.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success">Filter</button>
+    </div>
+  </div>
+</form>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Basic</th>
+      <th>HRA</th>
+      <th>DA</th>
+      <th>TA</th>
+      <th>Bonus</th>
+      <th>Overtime</th>
+      <th>Gross Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emp in employees %}
+      {% if emp.designation %}
+      <tr>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.designation.name }}</td>
+        <td>{{ emp.designation.basic_salary }}</td>
+        <td>{{ emp.hra }}</td>
+        <td>{{ emp.da }}</td>
+        <td>{{ emp.ta }}</td>
+        <td>{{ emp.designation.bonus }}</td>
+        <td>{{ emp.overtime }}</td>
+        <td><strong>{{ emp.gross_salary}}</strong></td>
+      </tr>
+      {% endif %}
+    {% empty %}
+      <tr>
+        <td colspan="9" class="text-center">No employees found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

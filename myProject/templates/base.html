@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Salary Management</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #eef2f3, #ffffff);
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .custom-navbar {
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .custom-navbar a {
+      color: #ffffff;
+      font-weight: 500;
+      padding: 14px 18px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .custom-navbar a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+      border-radius: 6px;
+    }
+
+    /* Main Container */
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      margin-top: 30px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+      border-left: 5px solid #007bff;
+      padding-left: 12px;
+    }
+
+    /* Table */
+    .table {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .table thead {
+      background: #007bff;
+      color: #ffffff;
+    }
+
+    .table tbody tr:hover {
+      background-color: #f1f7ff;
+      transition: background-color 0.3s;
+    }
+
+    /* Buttons */
+    .btn-success {
+      background: linear-gradient(135deg, #28a745, #218838);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Form */
+    .form-select {
+      border-radius: 8px;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    /* Footer (optional) */
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="custom-navbar">
+    {% include 'navbar.html' %}
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © {{ now|date:"Y" }} Employee Salary Management System
+  </footer>
+
+</body>
+
+</html>
